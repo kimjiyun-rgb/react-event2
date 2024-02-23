@@ -1,7 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import { Component, useState } from "react";
 import ConfirmButton from './ConfirmButton';
-import { useState } from 'react';
+// class Toggle extends Component
+// {
+//   constructor(props)
+//   {
+//     super(props);
+//     this.state = { isToggleOn: true };
+//     // this.handleClick = this.handleClick.bind(this);
+//   }
+
+//   render()
+//   {
+//     return (
+//       <button onClick={this.handleClick}>
+//         {this.state.isToggleOn ? '켜짐' : '꺼짐'}
+//       </button>
+//     );
+//   }
+// }
 
 function MyButton(props)
 {
@@ -14,7 +32,8 @@ function MyButton(props)
     <div>
       <div>
         {
-          btns.map((btn) => {
+          btns.map((btn) =>
+          {
             return (
               <button onClick={handleEvent}>{btn}</button>
             )
@@ -29,28 +48,34 @@ const Toggle = (props) =>
 {
   const [isToggleOn, setIsToggleOn] = useState(true);
 
-  const handleClick = (e) =>
+  const handleClick = (e) => 
   {
     setIsToggleOn(!isToggleOn);
   }
 
-  return (<button onClick={(e) => {
+  return (<button onClick={(e) =>
+  { //handleClick(e); 
     props.a("내가 했던 것");
   }}>
     {isToggleOn ? '켜짐' : '꺼짐'}
   </button>
+    // <button onClick={handleClick}>
+    // {isToggleOn ? '켜짐' : '꺼짐'}
+    // </button>
   );
 }
-function App() {
-  const handleClick2 = (action) => {
+function App()
+{
+  const handleClick2 = (action) =>
+  {
     alert(action);
   }
   return (
-     <div className="App">
+    <div className="App">
       <Toggle a={handleClick2} />
       <MyButton />
       <ConfirmButton />
-     </div>
+    </div>
   );
 }
 
